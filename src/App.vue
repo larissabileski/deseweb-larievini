@@ -1,20 +1,13 @@
+<script setu
+p>
+import HeaderCompVue from "@/components/template/HeaderComp.vue";
+import RodapeCompVue from "./components/template/RodapeComp.vue";
+</script>
+
 <template>
-  <header class="menu-superior">
-    <div class="menu-esquerda">
-      <span>Home</span>
-      <span>|</span>
-      <span>Jogadores</span>
-      <span>|</span>
-      <span>Times</span>
-    </div>
-    <div class="menu-direito">
-      <span>Sair</span>
-    </div>
-  </header>
-  <main>
-    <RouterView />
-  </main>
-  <footer>Rodapé</footer>
+  <HeaderCompVue />
+  <RouterView />
+  <RodapeCompVue />
 </template>
 
 <style>
@@ -26,14 +19,8 @@
   font-weight: normal;
   height: 100vh;
 }
-header.menu-superior {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-header,
-footer {
-  background-color: rgb(78, 127, 50); 
+header {
+  background-color: rgb(78, 127, 50);
   color: rgb(255, 255, 255);
   height: 15%;
   font-size: 1.3em;
@@ -41,12 +28,11 @@ footer {
   align-items: center;
   padding-left: 2rem;
 }
-
-header span {
-  padding: 0px 20px;
-}
-
 main {
   height: 70%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
 }
 </style>
