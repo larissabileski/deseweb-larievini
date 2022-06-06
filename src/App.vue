@@ -1,12 +1,13 @@
-<script setu
-p>
+<script setup>
 import HeaderCompVue from "@/components/template/HeaderComp.vue";
 import RodapeCompVue from "./components/template/RodapeComp.vue";
 </script>
 
 <template>
   <HeaderCompVue />
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
   <RodapeCompVue />
 </template>
 
