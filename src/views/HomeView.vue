@@ -9,5 +9,3 @@ header.menu-superior {
   justify-content: space-between;
 }
 </style>
-header.menu-superior { display: flex; align-items: center; justify-content:
-space-between; }

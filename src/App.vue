@@ -13,6 +13,7 @@ import RodapeCompVue from "./components/template/RodapeComp.vue";
 
 <style>
 @import "@/assets/base.css";
+@import "@/assets/style.css";
 
 #app {
   max-width: 1280px;
