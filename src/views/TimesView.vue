@@ -1,31 +1,30 @@
 <script>
-import { v4 as uuid } from "uuid";
+import axios from "axios"; 
 export default {
   data() {
     return {
       novo_time: "",
-      times: [
-        { id: "bbf13e16-8a92-49da-b37b-9f1f218bc384", name: "Time 1" },
-        { id: "46ec141f-f35b-4e50-b60d-3db9d6a6022a", name: "Time 2" },
-        { id: "6392406d-6273-44fd-814b-c45f4c6aed9f", name: "Time 3" },
-        { id: "978145ff-0026-475e-adc7-5029786bb6ce", name: "Time 4" },
-      ],
+      times:[],
     };
   },
+  async created(){
+    const times = await axios.get("http://localhost:4000/times");
+    this.times = times.data;
+  },
   methods: {
-    salvar() {
-      if (this.novo_time !== ""){
-        const novo_id = uuid();
-      this.times.push({
-        id: novo_id,
-        name: this.novo_time,
-      });
-      this.novo_time = ""
-      }
+    async salvar() {
+      const time = {
+        nome: this.novo_time,
+      };
+    const time_criado = await axios.post("http://localhost:4000/times", time);
+    this.times.push(time_criado.data);
+    this.novo_time = "";
     },
-    excluir(time){
+    async excluir(time){
+      await axios.delete(`http://localhost:4000/times/${time.id}`)
       const indice = this.times.indexOf(time)
       this.times.splice (indice,1);
+    ;
     }
   },
 };
@@ -55,7 +54,7 @@ export default {
       <tbody>
         <tr v-for="time in times" :key="time.id">
           <td>{{ time.id }}</td>
-          <td>{{ time.name }}</td>
+          <td>{{ time.nome }}</td>
           <td>
             <button>Editar</button>
             <button @click="excluir(time)">Apagar</button>
